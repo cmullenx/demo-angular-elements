@@ -1,0 +1,76 @@
+<div class="contentContainer card">
+  <!-- <h3 [ngStyle]="headerColor" class="widget-title">Order Lookup</h3> -->
+
+  <!-- Initial State -->
+  <div *ngIf="initial" class="no-order-number">
+    <h3 [ngStyle]="headerColor" class="order-widget-title">Order Lookup</h3>
+    <div class="no-tracking-number-provided">
+      <div class="awaiting-order-number">
+        Awaiting Order Number. Alternatively, you can input an order number
+        below to retrieve more details about the order.
+      </div>
+
+      <form
+        [formGroup]="orderLookupForm"
+        (ngSubmit)="onSubmit()"
+        *ngIf="!submitted"
+      >
+        <!-- <input
+          class="form-input"
+          type="text"
+          placeholder="Enter Order Number"
+          formControlName="orderNumber"
+        /> -->
+        <div class="md-input-group medium-6 columns">
+          <label class="md-label" for="helpTextInput">Label</label>
+          <input
+            class="md-input"
+            id="helpTextInput"
+            type="password"
+            placeholder="Placeholder"
+            aria-describedby="helpText"
+          />
+          <p class="md-input__help-text" id="helpText">
+            This is help text for the HTML only input.
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Loading  -->
+  <div *ngIf="loading">
+    <h3 [ngStyle]="headerColor" class="order-widget-title">Order Lookup</h3>
+    <i class="md-spinner md-spinner--80 md-spinner--black"></i>
+  </div>
+
+  <!-- Tracking Number Sumbmitted -->
+  <div *ngIf="submitted">
+    <div class="activityWrapper">
+      <h3 [ngStyle]="headerColor" class="order-widget-title">Order Lookup</h3>
+      <h4 class="table-header">Order Details</h4>
+      <table>
+        <tr>
+          <td>Order Number</td>
+          <td>{{ orderDetails.orderNumber }}</td>
+        </tr>
+        <tr>
+          <td>Order Status</td>
+          <td>{{ orderDetails.status }}</td>
+        </tr>
+        <tr>
+          <td>Ship To</td>
+          <td>{{ orderDetails.shipTo }}</td>
+        </tr>
+        <tr>
+          <td>Order Total</td>
+          <td>{{ orderDetails.shipmentTotal }}</td>
+        </tr>
+        <tr>
+          <td>Tracking Number</td>
+          <td>{{ orderDetails.trackingNumber }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

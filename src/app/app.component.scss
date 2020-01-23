@@ -1,0 +1,149 @@
+// @import '../variables.scss';
+// @import '~@momentum-ui/core/scss/momentum-ui.scss';
+// @import '~@momentum-ui/core/scss/layouts/sites';
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.container {
+  display: inline-flex;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #e0e0e0;
+  list-style: none;
+  color: #666;
+  font-size: 12px;
+}
+
+.activityWrapper {
+  padding: 1em;
+}
+
+.contentContainer {
+  padding: 1em;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.form-input {
+  width: 100%;
+  height: 30px;
+  border: none;
+  font-size: 12px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.package-track-icon {
+  height: 20px;
+  color: white;
+}
+
+.track-button {
+  height: 30px;
+  border-radius: 10px;
+  background: black;
+  color: white;
+  margin: 10px 0px 0px 10px;
+}
+
+.button-wrapper {
+  text-align: right;
+}
+
+.header-wrapper {
+  background: black;
+  color: white;
+  padding: 1px;
+  width: 98%;
+  border-width: 2px;
+  border-style: inset;
+}
+
+.month {
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.day {
+  font-size: 18px;
+  color: #000;
+}
+
+.number {
+  font-size: 30px;
+}
+
+.final-status {
+  text-transform: uppercase;
+  font-weight: 400;
+  width: 100%;
+  min-height: 40px;
+}
+
+.tracking-number {
+  margin-left: 5px;
+  font-weight: 100;
+  font-size: 18px;
+}
+
+.widget-title {
+  padding-left: 1em;
+  color: white;
+  text-transform: uppercase;
+}
+
+.awaiting-tracking-text {
+  padding: 1em;
+}
+
+.activityDescAndLocation {
+  margin-left: 20px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.table-header {
+  background-color: #dddddd;
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-family: arial, sans-serif;
+  font-size: 12px;
+}
+
+.order-widget-title {
+  text-transform: uppercase;
+}
+
+.no-order-number {
+  border: 1px solid #dddddd;
+  padding: 1em;
+}
+
+.awaiting-order-number {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  color: #666;
+  font-size: 12px;
+}

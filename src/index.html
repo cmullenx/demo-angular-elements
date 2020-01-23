@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularWrapper</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- "trackingnumber", "1Z871F000220005413" -->
+    <div class="upscontainer">
+      <!-- <ups-tracker
+        trackingnumber="1Z12345E6205277936"
+        colortheme="red"
+      ></ups-tracker> -->
+      <!-- <order-lookup ordernumber="15"></order-lookup> -->
+      <order-lookup></order-lookup>
+    </div>
+
+    <!-- Workout around for global is not defined nonsense error -->
+    <script>
+      if (global === undefined) {
+        var global = window
+      }
+    </script>
+  </body>
+</html>

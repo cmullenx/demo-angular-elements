@@ -1,0 +1,97 @@
+<div class="contentContainer card">
+  <h3 [ngStyle]="headerColor" class="widget-title">UPS Tracking</h3>
+
+  <!-- Initial State -->
+  <div *ngIf="initial" class="activityWrapper">
+    <div class="no-tracking-number-provided">
+      <div class="day">
+        Tracking Number
+      </div>
+      <div class="month">
+        Not
+      </div>
+      <div class="final-status">
+        Provided
+      </div>
+    </div>
+    <div class="container">
+      <div>
+        Awaiting Tracking Number. Alternatively, you can input your UPS tracking
+        number to get the latest package status below.
+      </div>
+    </div>
+
+    <form
+      [formGroup]="upsTrackingForm"
+      (ngSubmit)="onSubmit()"
+      *ngIf="!submitted"
+    >
+      <input
+        class="form-input"
+        type="text"
+        placeholder="Enter Tracking number"
+        formControlName="trackingNumber"
+      />
+    </form>
+  </div>
+
+  <!-- Loading  -->
+  <div *ngIf="loading">
+    <i class="md-spinner md-spinner--80 md-spinner--black"></i>
+  </div>
+
+  <!-- Tracking Number Sumbmitted -->
+  <div *ngIf="submitted && !error">
+    <div class="activityWrapper">
+      <div class="last-activity">
+        <div class="day">
+          {{ upsTrackingData.Activity[0].Date | date: 'EEEE' }}
+        </div>
+        <div class="month">
+          {{ upsTrackingData.Activity[0].Date | date: 'MMMM' }}
+        </div>
+        <div class="number">
+          {{ upsTrackingData.Activity[0].Date | date: 'dd' }}
+        </div>
+        <div class="final-status">
+          {{ upsTrackingData.Activity[0].Status.Type }}
+        </div>
+      </div>
+      <div class="container" *ngFor="let activity of upsTrackingData.Activity">
+        <div class="date">
+          <div>{{ activity.Date | date: 'MMM d' }}</div>
+          <div>{{ activity.Time }}</div>
+        </div>
+        <div class="activityDescAndLocation">
+          <div class="activityDescription">
+            {{ activity.Status.Description }}
+          </div>
+          <div class="activityLocation">
+            {{ activity.ActivityLocation.Address.City }}
+            {{ activity.ActivityLocation.Address.StateProvinceCode }}
+            {{ activity.ActivityLocation.Address.CountryCode }}
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div>
+          <img src="../assets/images/upslogo.png" />
+        </div>
+        <div class="activityDescription">
+          <div>Tracking Number</div>
+          <span> {{ upsTrackingData.TrackingNumber }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="error && submitted" class="activityWrapper">
+    <div class="no-tracking-number-provided">
+      <div class="container">
+        <div>
+          There was a problem loading your data
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
