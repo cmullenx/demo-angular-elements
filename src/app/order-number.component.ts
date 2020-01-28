@@ -20,7 +20,7 @@ import { FormGroup, FormControl } from '@angular/forms'
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class OrderNumberComponent implements OnInit, OnChanges {
-  @Input() ordernumber: string
+  @Input() ordernumber: string = 'SCO-88-0330'
   @Input() colortheme: string
 
   @Output() trackingNumber: EventEmitter<any> = new EventEmitter()

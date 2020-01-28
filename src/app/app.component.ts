@@ -20,7 +20,7 @@ import { AppService } from './app.service'
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class AppComponent implements OnInit, OnChanges {
-  @Input() trackingnumber: string
+  @Input() trackingnumber: string = '1Z871F000220005413'
   @Input() colortheme
 
   upsTrackingForm: FormGroup
@@ -62,9 +62,122 @@ export class AppComponent implements OnInit, OnChanges {
   private async fetchTrackingInfo() {
     this.loading = true
     const trackingNumberObj = this.upsTrackingForm.value
-    const response: any = await this.appService.getTrackingInfo(
-      trackingNumberObj
-    )
+    // const response: any = await this.appService.getTrackingInfo(
+    //   trackingNumberObj
+    // )
+
+    const response = {
+      TrackResponse: {
+        Response: {
+          ResponseStatus: { Code: '1', Description: 'Success' },
+          TransactionReference: {
+            CustomerContext: 'Your Test Case Summary Description'
+          }
+        },
+        Shipment: {
+          InquiryNumber: {
+            Code: '01',
+            Description: 'ShipmentIdentificationNumber',
+            Value: '1Z12345E6205277936'
+          },
+          ShipmentType: { Code: '01', Description: 'Small Package' },
+          ShipperNumber: '12345E',
+          Service: { Code: '13', Description: 'NEXT DAY AIR SAVER' },
+          Package: {
+            TrackingNumber: '1Z12345E6205277936',
+            Activity: [
+              {
+                ActivityLocation: {
+                  Address: { City: 'BONN', CountryCode: 'DE' }
+                },
+                Status: {
+                  Type: 'X',
+                  Description: 'UPS INTERNAL ACTIVITY CODE',
+                  Code: 'KB'
+                },
+                Date: '20100830',
+                Time: '103900'
+              },
+              {
+                ActivityLocation: {
+                  Address: { City: 'BONN', CountryCode: 'DE' }
+                },
+                Status: {
+                  Type: 'X',
+                  Description: 'ADVERSE WEATHER CONDITIONS CAUSED THIS DELAY',
+                  Code: 'DJ'
+                },
+                Date: '20100830',
+                Time: '103200'
+              },
+              {
+                ActivityLocation: {
+                  Address: {
+                    City: 'ANYTOWN',
+                    StateProvinceCode: 'GA',
+                    CountryCode: 'US'
+                  }
+                },
+                Status: {
+                  Description:
+                    "THE RECEIVER'S LOCATION WAS CLOSED ON THE 2ND DELIVERY ATTEMPT. A 3RD DELIVERY ATTEMPT WILL BE MADE",
+                  Code: 'X'
+                },
+                Date: '20100910',
+                Time: '180300'
+              },
+              {
+                ActivityLocation: {
+                  Address: {
+                    City: 'ANYTOWN',
+                    StateProvinceCode: 'GA',
+                    PostalCode: '30340',
+                    CountryCode: 'US'
+                  },
+                  Code: 'MX',
+                  Description: 'LEFT AT'
+                },
+                Status: { Type: 'D', Description: 'DELIVERED', Code: 'FS' },
+                Date: '20100912',
+                Time: '115700'
+              },
+              {
+                ActivityLocation: {
+                  Address: {
+                    City: 'WEST CHESTER-MALVERN',
+                    StateProvinceCode: 'GA',
+                    CountryCode: 'US'
+                  }
+                },
+                Status: { Type: 'P', Description: 'PICKUP SCAN', Code: 'PU' },
+                Date: '20100404',
+                Time: '144000'
+              },
+              {
+                ActivityLocation: {
+                  Address: { City: 'BONN', CountryCode: 'DE' }
+                },
+                Status: {
+                  Type: 'X',
+                  Description: 'UPS INTERNAL ACTIVITY CODE',
+                  Code: 'KB'
+                },
+                Date: '20100830',
+                Time: '131300'
+              }
+            ],
+            PackageWeight: {
+              UnitOfMeasurement: { Code: 'LBS' },
+              Weight: '1.00'
+            }
+          }
+        },
+        Disclaimer:
+          'You are using UPS tracking service on customer integration test environment, please switch to UPS production environment once you finish the test. The URL is https://onlinetools.ups.com/webservices/Track'
+      }
+    }
+
+    console.log('this is response', response)
 
     if (response.hasOwnProperty('TrackResponse')) {
       this.upsTrackingData = {
