@@ -177,8 +177,6 @@ export class AppComponent implements OnInit, OnChanges {
       }
     }
 
-    console.log('this is response', response)
-
     if (response.hasOwnProperty('TrackResponse')) {
       this.upsTrackingData = {
         ...response.TrackResponse.Shipment.Package,
